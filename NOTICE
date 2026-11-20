@@ -1,0 +1,28 @@
+TWTTY - Tell Me What To Tell You
+Agentic Enterprise Engineering Framework
+Copyright 2026 Ajai Peddapanga
+
+Original Creator and Lead Architect: Ajai Peddapanga.
+This product includes software and methodology developed by Ajai Peddapanga.
+
+The first-party code, methodology text, templates, configuration,
+documentation and artwork in this release are offered under the Apache
+License, Version 2.0. See the root LICENSE for the complete terms.
+Third-party material, if included, retains its applicable notices and terms.
+
+TWTTY was previously named Promptless Agentic SDLC. This repository was
+initially adapted from https://github.com/ajai-d/promptless-agentic-sdlc.
+The initial framework import used source revision
+284db602edc1f4d346613cc460b248e310157fee. This release snapshot includes
+subsequent UX and framework changes. Earlier development history is retained
+separately in a private archive.
+
+Earlier distributed revisions offered methodology and templates under
+Creative Commons Attribution 4.0 International (CC BY 4.0). Those earlier
+grants are not revoked. Credits and license grants accompanying previously
+distributed artwork remain part of the historical record.
+
+This NOTICE is informational and does not add conditions to Apache 2.0.
+Citation and "Built with TWTTY" acknowledgments are appreciated, not
+additional license conditions. Preserve applicable notices as required by
+the license. See TRADEMARKS.md for branding information.
