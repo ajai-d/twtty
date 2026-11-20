@@ -462,7 +462,7 @@
         <table class="readme-table">
           <thead><tr><th scope="col">Level</th><th scope="col">Intended use</th></tr></thead>
           <tbody>
-            <tr><td><strong>L1</strong></td><td>Throwaway prototype or experiment; non-production.</td></tr>
+            <tr><td><strong>L1</strong></td><td>Prototype or experiment; non-production.</td></tr>
             <tr><td><strong>L2</strong></td><td>Internal workflow with a low blast radius.</td></tr>
             <tr><td><strong>L3</strong></td><td>Team-facing deliverable with moderate stakes.</td></tr>
             <tr><td><strong>L4</strong></td><td>Customer-facing or revenue-impacting work.</td></tr>
@@ -549,7 +549,7 @@
           <li><strong>You control scope and approvals.</strong> Interactive mode is the default. Scoped Autopilot can be authorized after <code>SEED-EXIT</code>; it does not waive safeguards.</li>
           <li><strong>Plans support team collaboration.</strong> Work is organized by domain, real dependencies, safe concurrency, and integration requirements—not hard-coded developers.</li>
           <li><strong>Work is traceable.</strong> Append-only replay logs record prompts, outcomes, approvals and artifact paths. Single-domain Sequential work may reuse the authorized direct context where policy permits; domain/worker isolation and required publication PR/CI/review controls still apply.</li>
-          <li><strong>Rigor matches risk.</strong> L1 is a throwaway experiment, not approval for real users or production. Shared team deliverables generally need L2 or L3 controls.</li>
+          <li><strong>Rigor matches risk.</strong> L1 is a prototype or experiment, not approval for real users or production. Shared team deliverables generally need L2 or L3 controls.</li>
         </ul>
         <p>New projects normally place process artifacts under the product's <code>twtty/</code> folder: <code>seed/</code>, <code>spec/</code>, <code>plan/</code>, <code>replay-execution/</code> and <code>twtty-runtime-config/</code>. Preserve an existing adopted artifact root/layout. Application code, tests, infrastructure and CI stay in their normal locations. Replay evidence is authoritative; <code>state.md</code> is derived. Every invocation reads the complete applicable framework; adopted project configuration changes only through approved reconciliation, never an age-driven refresh.</p>
       </details>
@@ -577,6 +577,7 @@
     <footer>
       <p class="v20-creator-credit">Original Creator &amp; Lead Architect: Ajai Peddapanga</p>
       <a href="../LICENSE">License</a><a href="../NOTICE">Attribution</a><a href="life-cycle-workstation.html#workflow" data-reference-section="workflow">Lifecycle reference</a>
+      <p>Get TWTTY: <a href="https://github.com/ajai-d/twtty">Official GitHub repository</a>.</p>
       <p>TWTTY is currently in beta.</p></footer>
   </main>
   <dialog id="domain-info" aria-labelledby="domain-info-title">
