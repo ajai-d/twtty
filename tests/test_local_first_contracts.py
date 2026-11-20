@@ -930,7 +930,8 @@ class ProtocolContracts(unittest.TestCase):
         realization = next(line for line in method.splitlines()
                            if line.startswith("**Gate realization tracks"))
         for requirement in ("only for a new repository", "from SEED onward",
-                            "authoritative gate is the reviewed, CI-passing merge"):
+                            "authoritative integration gate is the reviewed, CI-passing merge",
+                            "stage-exit approval is not itself an integration request"):
             self.assertIn(requirement, realization)
         publication = next(line for line in method.splitlines()
                            if line.startswith("- **Version control from SEED"))
@@ -944,6 +945,30 @@ class ProtocolContracts(unittest.TestCase):
             self.assertIn("Direct bootstrap pushes are limited to new", hooks)
             self.assertIn("never disable protection for onboarding", hooks)
             self.assertNotIn("to `main`", hooks)
+
+    def test_stage_approval_does_not_force_a_publication_pr_or_merge(self):
+        method = read(SDLC / "sdlc.md")
+        boundary = next(line for line in method.splitlines()
+                        if line.startswith("**Stage approval is not a PR boundary.**"))
+        for requirement in ("`SEED-EXIT`, `SPEC-EXIT` and `PLAN-EXIT`",
+                            "required stage checks and approvals",
+                            "approval evidence committed and pushed there",
+                            "Reuse one domain/scope PR",
+                            "rather than open or merge a PR solely to complete a stage",
+                            "planned domain/scope integration checkpoint",
+                            "explicit external policy or approved plan",
+                            "satisfy it before advancing the dependent work",
+                            "Required CI/reviews still gate integration",
+                            "pending or failing integration checks MUST NOT be reported as passed",
+                            "checks due at the current stage still block that stage"):
+            self.assertIn(requirement, boundary)
+        self.assertNotIn("local approval is only a working checkpoint until they pass and merge",
+                         method)
+        for binding in ("devtools-config1.md", "devtools-config2.md"):
+            hooks = read(SDLC / "config" / "devtools" / binding)
+            self.assertIn("authorized working branch", hooks)
+            self.assertIn("Stage approval does not require a separate PR or merge per stage", hooks)
+            self.assertIn("explicit earlier-merge policies remain binding", hooks)
 
     def test_environment_ownership_remains_without_bespoke_infra_checks(self):
         profile = read(SDLC / "config" / "development" / "default.md")
