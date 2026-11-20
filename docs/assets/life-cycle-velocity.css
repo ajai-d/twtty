@@ -1,0 +1,101 @@
+/* Existing token names keep both guides' layout and controllers unchanged. */
+:root, #flow, #info {
+  --paper: #f8fafc;
+  --surface: #ffffff;
+  --white: #ffffff;
+  --ink: #334155;
+  --muted: #475569;
+  --green: #2563eb;
+  --green-light: #eff6ff;
+  --mint: #eff6ff;
+  --line: #cbd5e1;
+  --control: #64748b;
+  --blue: #1d4ed8;
+  --blue-light: #eff6ff;
+  --amber: #9a3412;
+  --amber-light: #fff7ed;
+  --sand: #fff7ed;
+  --focus: #2563eb;
+  --nav: #0b1220;
+  --soft: #f1f5f9;
+  --velocity-violet: #7c3aed;
+  --velocity-cyan: #06b6d4;
+  --velocity-deep-cyan: #0e7490;
+}
+
+h1, h2, h3, #flow h2, #info h2 { color: var(--nav); }
+a:hover, #flow a:hover, #info a:hover { color: var(--blue); }
+button, select, summary, a { -webkit-tap-highlight-color: #dbeafe; }
+
+header, .masthead { background: var(--nav); border-bottom-color: var(--velocity-cyan); }
+.top a, .masthead nav a, .masthead .brand { color: var(--white); }
+.top-nav a:hover, .top-nav a:focus-visible { background: #1e293b; }
+.masthead nav a:hover, .masthead .brand:hover { color: var(--velocity-cyan); }
+.brand small { color: #cbd5e1; }
+header :focus-visible, .masthead :focus-visible, .command-box :focus-visible,
+.prompt button:focus-visible, #flow .prompt button:focus-visible, #info .prompt button:focus-visible {
+  outline-color: var(--velocity-cyan);
+}
+
+.readme-section .overview-stages li { border-color: var(--line); }
+.overview-stages .stage-owner { color: var(--blue); }
+.overview-stages .stage-index { background: #dbeafe; }
+.readme-section .overview-stages .human-stage {
+  background: var(--velocity-violet);
+  border-color: var(--velocity-violet);
+}
+.overview-stages .human-stage .stage-index { background: #5b21b6; }
+#flow .v5-human-work { border-color: var(--velocity-violet); }
+#flow .v5-human-work legend { color: var(--velocity-violet); }
+#flow .v5-ai-work { border-color: var(--green); }
+#flow .v5-ai-work legend { color: var(--green); }
+
+#flow .decision { background: var(--mint); border-color: #93c5fd; }
+#flow .diamond { border-color: var(--green); background: var(--white); }
+#flow .node.context, #info .node.context { background: var(--soft); border-color: var(--line); }
+#flow .node.context strong, #flow .node.context .number,
+#info .node.context strong, #info .node.context .number { color: var(--muted); }
+#flow .node.blocked { background: var(--sand); border-color: var(--amber); }
+#flow .arrow, #flow .infra-lane .arrow { background: var(--green); }
+#flow .arrow::after, #flow .infra-lane .arrow::after { border-color: var(--green); }
+#flow .fork::before, #flow .lane::before { border-color: var(--green); }
+#flow .legend i { background: var(--green); }
+#flow .legend .separate { border-color: var(--velocity-deep-cyan); background: none; }
+#flow .infra-lane { border-color: var(--velocity-deep-cyan); background: var(--mint); }
+#flow .infra-lane .lane-label { color: var(--velocity-deep-cyan); }
+#flow .infra-lane .node { border-left-color: var(--velocity-deep-cyan); }
+#flow .infra-lane .node:hover { border-color: var(--velocity-deep-cyan); background: var(--mint); }
+#flow .loop, .loop { border-color: #93c5fd; }
+#flow .join { border-color: var(--velocity-deep-cyan); color: var(--muted); }
+#flow .check { border-color: var(--control); }
+#flow .node .number { border-color: #93c5fd; }
+
+.command-box, .prompt, #flow .prompt, #info .prompt { background: var(--nav); color: var(--white); }
+.command-footer span, .prompt .status, #flow .prompt .status, #info .prompt .status { color: #e2e8f0; }
+.prompt .status.error, #flow .prompt .status.error, #info .prompt .status.error { color: #fecaca; }
+.button { background: var(--green); color: var(--white); border-color: var(--green); }
+.button:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.action.primary:hover { background: var(--blue); color: var(--white); }
+.button:disabled, .prompt button:disabled, #flow .prompt button:disabled, #info .prompt button:disabled {
+  background: #334155; color: #cbd5e1; border-color: var(--control);
+}
+
+select, input[type="text"], #info, .close { border-color: var(--control); }
+.stage-button { background: var(--soft); }
+.stage-button:hover { background: var(--green-light); border-color: #93c5fd; }
+.stage-button[aria-selected="true"] { background: var(--green); color: var(--white); border-color: var(--green); }
+.fact { border-left-color: var(--green); }
+.lane.infra { border-top-color: var(--velocity-deep-cyan); }
+.flow span, .step-list li::before { border-color: #93c5fd; }
+.flow li:not(:last-child)::after { color: var(--green); }
+.design-note { border-color: #fdba74; }
+.design-note p { color: var(--amber); }
+.callout.warning { border-color: var(--amber); }
+.field .field-error, .status-message[data-error="true"], .status.error { color: #b91c1c; }
+input[aria-invalid="true"] { border-color: #b91c1c; }
+
+@media print {
+  :root, #flow, #info { --paper: #ffffff; --surface: #ffffff; --ink: #000000; }
+  body, .page, #flow, #info { background: #ffffff; color: #000000; }
+  h1, h2, h3, #flow h2, #info h2 { color: #000000; }
+}

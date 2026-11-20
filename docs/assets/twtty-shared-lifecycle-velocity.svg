@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="570" viewBox="0 0 1200 570" role="img" aria-labelledby="title description">
+  <title id="title">TWTTY at a glance</title>
+  <desc id="description">One project or iteration follows SEED, SPEC, PLAN, and EXECUTE. SPEC identifies domains; PLAN organizes work-item groups, interfaces, and dependencies. Applicable delivery roles cover specification, planning, implementation, review, security, testing, governance, CI/CD, deployment, and operations. Later iterations return to approved SEED intent. Domains do not run independent full lifecycles.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L7 4L0 8" fill="#2563eb"/></marker>
+    <style>
+      text { font-family:Segoe UI,Arial,sans-serif; fill:#334155; }
+      .heading { font-size:26px; font-weight:750; fill:#0b1220; }
+      .body { font-size:14px; }
+      .small { font-size:12px; fill:#475569; }
+      .bar { font-size:14px; font-weight:750; fill:#ffffff; }
+      .role { font-size:14px; font-weight:700; fill:#ffffff; text-anchor:middle; }
+      .control-title { font-size:11px; font-weight:750; letter-spacing:.6px; }
+      .gate { font-size:11px; font-weight:700; fill:#9a3412; text-anchor:middle; }
+      .on-dark { fill:#ffffff; }
+      .iteration-label { fill:#2563eb; }
+    </style>
+  </defs>
+  <rect width="1200" height="570" rx="12" fill="#ffffff"/>
+  <text x="40" y="45" class="heading">TWTTY at a glance</text>
+  <text x="40" y="73" class="body">One approved project / iteration scope &#8212; domains organize work, not separate TWTTY runs.</text>
+  <rect x="40" y="96" width="1120" height="54" rx="7" fill="#7c3aed"/>
+  <text x="58" y="119" class="bar">SEED &#183; Human intent</text>
+  <text x="58" y="139" font-size="13" class="on-dark">Baseline: project seed. Later Iteration: approved change intent; reuse the project seed.</text>
+  <path d="M90 150V195" fill="none" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <text x="150" y="181" class="small">PLAN records dependencies. EXECUTE prepares shared services first; ready app work is Sequential or explicitly approved Parallel.</text>
+  <rect x="40" y="196" width="100" height="26" rx="4" fill="#2563eb"/>
+  <rect x="152" y="196" width="100" height="26" rx="4" fill="#7c3aed"/>
+  <rect x="264" y="196" width="896" height="26" rx="4" fill="#0b1220"/>
+  <text x="90" y="214" class="bar" text-anchor="middle">SPEC</text>
+  <text x="202" y="214" class="bar" text-anchor="middle">PLAN</text>
+  <text x="712" y="214" class="bar" text-anchor="middle">EXECUTE &#183; applicable delivery roles and verification</text>
+  <g>
+    <rect x="40" y="238" width="100" height="104" rx="6" fill="#2563eb"/>
+    <text x="90" y="277" class="role"><tspan x="90">Spec</tspan><tspan x="90" dy="19">Agent</tspan></text>
+    <rect x="152" y="238" width="100" height="104" rx="6" fill="#7c3aed"/>
+    <text x="202" y="277" class="role"><tspan x="202">Plan</tspan><tspan x="202" dy="19">Agent</tspan></text>
+    <rect x="264" y="238" width="100" height="104" rx="6" fill="#2563eb"/>
+    <text x="314" y="277" class="role"><tspan x="314">Build</tspan><tspan x="314" dy="19">Agent</tspan></text>
+    <rect x="376" y="238" width="100" height="104" rx="6" fill="#7c3aed"/>
+    <text x="426" y="267" class="role"><tspan x="426">Code</tspan><tspan x="426" dy="19">Review</tspan><tspan x="426" dy="19">Agent</tspan></text>
+    <rect x="488" y="238" width="100" height="104" rx="6" fill="#9a3412"/>
+    <text x="538" y="267" class="role"><tspan x="538">Security</tspan><tspan x="538" dy="19">Scanning</tspan><tspan x="538" dy="19">Agent</tspan></text>
+    <rect x="600" y="238" width="100" height="104" rx="6" fill="#0e7490"/>
+    <text x="650" y="267" class="role"><tspan x="650">QA +</tspan><tspan x="650" dy="19">Integration</tspan><tspan x="650" dy="19">Testing</tspan></text>
+    <rect x="712" y="238" width="100" height="104" rx="6" fill="#334155"/>
+    <text x="762" y="277" class="role"><tspan x="762">Governance</tspan><tspan x="762" dy="19">Agent</tspan></text>
+    <rect x="824" y="238" width="100" height="104" rx="6" fill="#0b1220"/>
+    <text x="874" y="277" class="role"><tspan x="874">CI/CD</tspan><tspan x="874" dy="19">Agent</tspan></text>
+    <rect x="936" y="238" width="100" height="104" rx="6" fill="#0b1220"/>
+    <text x="986" y="277" class="role"><tspan x="986">Deployment</tspan><tspan x="986" dy="19">Agent</tspan></text>
+    <rect x="1048" y="238" width="112" height="104" rx="6" fill="#0b1220"/>
+    <text x="1104" y="277" class="role"><tspan x="1104">Ops</tspan><tspan x="1104" dy="19">Agent</tspan></text>
+  </g>
+  <g fill="#9a3412">
+    <path d="M146 284L150 290L146 296L142 290Z"/><text x="146" y="359" class="gate">G1</text>
+    <path d="M258 284L262 290L258 296L254 290Z"/><text x="258" y="359" class="gate">G2</text>
+    <path d="M370 284L374 290L370 296L366 290Z"/><text x="370" y="359" class="gate">G3</text>
+    <path d="M482 284L486 290L482 296L478 290Z"/><text x="482" y="359" class="gate">G4</text>
+    <path d="M594 284L598 290L594 296L590 290Z"/><text x="594" y="359" class="gate">G5</text>
+    <path d="M706 284L710 290L706 296L702 290Z"/><text x="706" y="359" class="gate">G6</text>
+    <path d="M818 284L822 290L818 296L814 290Z"/><text x="818" y="359" class="gate">G7</text>
+    <path d="M930 284L934 290L930 296L926 290Z"/><text x="930" y="359" class="gate">G8</text>
+    <path d="M1042 284L1046 290L1042 296L1038 290Z"/><text x="1042" y="359" class="gate">G9</text>
+  </g>
+  <text x="40" y="382" class="small">Self-review and correction occur before applicable gates. These roles and gate numbers are illustrative, not a fixed agent roster.</text>
+  <path d="M1104 342V394" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <rect x="1048" y="394" width="112" height="35" rx="5" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="1104" y="416" class="body" text-anchor="middle">Staging*</text>
+  <path d="M1104 429V450H20V123H40" fill="none" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="380" y="441" width="470" height="19" fill="#ffffff"/>
+  <text x="615" y="456" font-size="13" font-weight="650" class="iteration-label" text-anchor="middle">Next Iteration: approve new SEED intent; reuse valid prior artifacts</text>
+  <text x="40" y="423" class="small">*SDLC CI is required; application CD is opt-in. Deployment/staging/operations follow the approved scope and target.</text>
+  <g>
+    <rect x="40" y="485" width="268" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="54" y="507" class="control-title">EXECUTION MODE</text>
+    <text x="54" y="532" font-size="13">Interactive / scoped Autopilot</text>
+    <rect x="324" y="485" width="268" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="338" y="507" class="control-title">WORK PATTERN</text>
+    <text x="338" y="532" font-size="13">Sequential / approved Parallel</text>
+    <rect x="608" y="485" width="268" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="622" y="507" class="control-title">SELF-EVALUATING</text>
+    <text x="622" y="526" font-size="12">Self-review + bounded recovery;</text>
+    <text x="622" y="542" font-size="12">required Human approvals remain.</text>
+    <rect x="892" y="485" width="268" height="65" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="906" y="507" class="control-title">RISK-CALIBRATED</text>
+    <text x="906" y="532" font-size="13">L1&#8211;L5: applicable checks and isolation</text>
+  </g>
+</svg>

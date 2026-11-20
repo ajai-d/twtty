@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>TWTTY loop mark</title>
+  <rect width="64" height="64" rx="17" fill="#0b1220"/>
+  <path d="M16 22h32v8H36v21h-8V30H16z" fill="#ffffff"/>
+  <path d="M17 43a23 23 0 0 1-4-13M47 21a23 23 0 0 1 4 13" fill="none" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+  <path d="m10 34 3-6 4 5m30-6 4 6 3-6" fill="none" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

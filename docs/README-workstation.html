@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="TWTTY Software Engineering Factory. Intent-Driven. AI-Orchestrated. Individual and team development with fast local feedback and protected shared delivery.">
+  <title>TWTTY&trade; - Software Engineering Factory - Workflow</title>
+  <link rel="icon" href="assets/twtty-mark-velocity.svg" type="image/svg+xml">
+  <style>
+    :root { color-scheme:light; --paper:#f5f7f9; --white:#ffffff; --ink:#182d38; --muted:#526670; --green:#116854; --mint:#eaf4ef; --line:#cbd9d5; --control:#789189; --amber:#79511d; --sand:#fff5e6; --focus:#2563b5; --blue:#20598d; --nav:#112d33; --soft:#f0f5f4; --shadow:0 8px 28px rgb(17 45 51 / .05); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:100px; background:var(--paper); }
+    [id] { scroll-margin-top:12px; }
+    body { margin:0; font:16px/1.55 "Segoe UI Variable Text","Segoe UI",Aptos,system-ui,sans-serif; color:var(--ink); }
+    a { color:var(--green); text-underline-offset:.2em; }
+    a:hover { color:var(--blue); }
+    button,input,select { font:inherit; }
+    button,a { touch-action:manipulation; }
+    button { cursor:pointer; }
+    :focus-visible { outline:3px solid var(--focus); outline-offset:4px; }
+    header :focus-visible { outline-color:#efbc77; }
+    [hidden] { display:none!important; }
+    .skip { position:fixed; top:12px; left:12px; z-index:100; padding:10px 16px; background:var(--white); transform:translateY(-180%); }
+    .skip:focus { transform:none; }
+    header { position:sticky; top:0; z-index:20; background:var(--nav); color:var(--white); border-bottom:1px solid #34545a; }
+    .top { max-width:1208px; margin:auto; padding:12px 24px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.08em; }
+    .brand img { width:34px; height:34px; }
+    .top a { color:var(--white); font-size:.82rem; }
+    .top-nav { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:4px; }
+    .top-nav a { display:inline-flex; min-height:44px; align-items:center; padding:8px 10px; border-radius:6px; text-decoration:none; font-weight:600; }
+    .top-nav a:hover,.top-nav a:focus-visible { background:#284950; }
+    .menu-toggle { min-height:44px; padding:8px 12px; border:1px solid #91aaa9; border-radius:6px; background:var(--white); color:var(--green); font-size:.82rem; font-weight:700; }
+    .menu-toggle:hover { background:var(--mint); }
+    main { width:min(1160px,calc(100% - 48px)); margin:28px auto 48px; }
+    h1,h2 { font-family:"Segoe UI Variable Display","Segoe UI",Aptos,system-ui,sans-serif; font-weight:750; text-wrap:balance; }
+    h1 { margin:4px 0 6px; font-size:clamp(2.25rem,4vw,3.4rem); line-height:1.05; letter-spacing:-.055em; color:var(--nav); }
+    h2 { margin:0 0 12px; font-size:1.55rem; line-height:1.25; letter-spacing:-.025em; }
+    p { margin:0 0 14px; }
+    .intro { display:flex; justify-content:space-between; gap:24px; align-items:start; margin-bottom:20px; }
+    .intro p { color:var(--muted); max-width:65ch; }
+    .flow-tools { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+    .entry-action { margin:14px 0 0; }
+    .entry-action .choice { background:var(--green); color:var(--white); }
+    .entry-action .choice:hover { background:var(--mint); color:var(--green); }
+    #map-status:empty { min-height:0; margin:0; }
+    .eyebrow { color:var(--green); font-size:.72rem; font-weight:750; letter-spacing:.1em; text-transform:uppercase; }
+    .pill { display:inline-block; padding:5px 8px; border-radius:5px; background:var(--mint); color:var(--green); font-size:.7rem; line-height:1.3; font-weight:750; letter-spacing:.03em; text-transform:uppercase; }
+    .pill.planned { color:var(--amber); background:var(--sand); }
+    .legend { margin-top:12px; display:flex; gap:12px; flex-wrap:wrap; font-size:.77rem; color:var(--muted); }
+    .legend span { display:flex; align-items:center; gap:6px; }
+    .legend i { width:17px; height:3px; background:var(--green); }
+    .legend .separate { border-top:2px dashed #9c6a35; height:0; background:none; }
+    .canvas { background:var(--white); border:1px solid var(--line); border-radius:14px; padding:24px clamp(16px,2.6vw,32px); box-shadow:var(--shadow); }
+    .start { width:max-content; margin:auto; border:2px solid var(--green); background:var(--green); color:var(--white); border-radius:40px; padding:9px 35px; font-size:.82rem; font-weight:800; letter-spacing:.1em; }
+    .arrow { height:22px; width:2px; background:var(--line); margin:auto; position:relative; }
+    .arrow::after { content:""; position:absolute; width:7px; height:7px; border-right:2px solid var(--line); border-bottom:2px solid var(--line); transform:rotate(45deg); left:-2.5px; bottom:0; }
+    .decision { text-align:center; border:1px solid var(--line); border-radius:9px; background:var(--soft); padding:16px 16px 12px; }
+    .decision-title { display:flex; justify-content:center; align-items:center; gap:11px; font-size:.91rem; font-weight:750; }
+    .diamond { width:14px; height:14px; transform:rotate(45deg); border:2px solid var(--green); background:var(--white); flex-shrink:0; }
+    .choices { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:13px; }
+    .choice { min-height:44px; padding:9px 14px; border:1px solid var(--control); border-radius:7px; background:var(--white); color:var(--green); font-size:.85rem; font-weight:650; }
+    .choice:hover { background:var(--mint); border-color:var(--green); }
+    .choice[aria-pressed=true] { color:var(--white); background:var(--green); border-color:var(--green); }
+    .choice[aria-pressed=true]:focus-visible { outline-offset:4px; }
+    .scenario { min-height:44px; padding:12px 0 0; color:var(--muted); text-align:center; font-size:.85rem; }
+    .spine { width:min(700px,100%); margin:auto; }
+    .node { display:flex; align-items:center; gap:14px; width:100%; text-align:left; min-height:70px; border:1px solid var(--line); border-left:3px solid var(--green); border-radius:9px; padding:14px 16px; background:var(--white); color:var(--ink); }
+    .node:hover { background:var(--mint); border-color:var(--green); }
+    .node .number { width:34px; height:34px; border:1px solid #b4c7b8; border-radius:50%; display:grid; place-items:center; font-size:.75rem; font-weight:800; color:var(--green); flex-shrink:0; font-variant-numeric:tabular-nums; }
+    .node .text { flex:1; min-width:0; }
+    .node strong { display:block; font-size:.98rem; font-weight:700; }
+    .node small { display:block; color:var(--muted); font-size:.82rem; line-height:1.45; margin-top:4px; }
+    .node .more { color:var(--green); font-size:1.3rem; font-weight:600; }
+    .node.context { border-color:#d7e0dc; background:#f0f4f2; }
+    .node.context strong,.node.context .number { color:#53675f; }
+    .node.blocked { border-color:#c99b63; border-left-color:#97612b; background:var(--sand); }
+    .node.end { background:var(--mint); }
+    .node.tiny { min-height:61px; padding:12px 14px; }
+    .controls { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin:15px 0 0; }
+    .check { display:flex; align-items:center; gap:9px; min-height:44px; cursor:pointer; font-size:.85rem; padding:9px 12px; border:1px solid var(--control); border-radius:7px; background:var(--white); }
+    .check input { width:18px; height:18px; accent-color:var(--green); margin:0; }
+    .dev-decision { margin-top:14px; }
+    .dev-note { border-left:3px solid #a7742d; border-radius:0 6px 6px 0; padding:12px 14px; color:var(--amber); background:var(--sand); font-size:.83rem; margin:14px 0 0; }
+    .fork { position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:30px; padding-top:23px; margin-top:2px; }
+    .fork::before { content:""; position:absolute; top:0; left:25%; right:25%; border-top:2px solid var(--line); }
+    .fork.single-lane, #flow .fork.single-lane { grid-template-columns:minmax(0,1fr); width:min(700px,100%); margin:auto; padding-top:0; }
+    .fork.single-lane::before,.fork.single-lane .lane::before,#flow .fork.single-lane::before,#flow .fork.single-lane .lane::before { display:none; }
+    .lane { min-width:0; }
+    .lane::before { content:""; height:20px; border-left:2px solid var(--line); display:block; width:2px; margin:auto; margin-top:-23px; }
+    .lane-label { text-align:center; color:var(--green); font-size:.71rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; margin:12px 0; }
+    .infra-lane { padding:0 15px 18px; border:1px dashed #bd9c6e; border-radius:9px; background:#fcf8f0; }
+    .infra-lane .lane-label { color:var(--amber); }
+    .infra-lane .node { border-left-color:#97612b; }
+    .infra-lane .node:hover { background:var(--sand); border-color:#97612b; }
+    .infra-lane .arrow { background:#c4a67c; }
+    .infra-lane .arrow::after { border-color:#c4a67c; }
+    .loop { border:1px solid #bfd7ca; background:var(--mint); border-radius:6px; padding:10px; margin-top:10px; font-size:.8rem; color:var(--green); text-align:center; }
+    .loop span { white-space:normal; }
+    .lane-note { color:var(--muted); font-size:.81rem; margin:13px 0 0; text-align:center; }
+    .join { text-align:center; font-size:.81rem; color:var(--amber); padding:14px 18px; margin-top:16px; border-block:1px dashed #c6ad86; }
+    .finish { width:min(700px,100%); margin:auto; }
+    .version-note { margin:22px 0 0; color:var(--muted); font-size:.78rem; }
+    footer { padding-top:24px; display:flex; flex-wrap:wrap; gap:10px 22px; color:var(--muted); font-size:.79rem; }
+    footer a { display:inline-flex; min-height:32px; align-items:center; }
+    dialog { width:min(590px,calc(100% - 28px)); max-height:85dvh; border:1px solid var(--line); border-radius:14px; padding:28px; color:var(--ink); background:var(--white); overflow:auto; overscroll-behavior:contain; scroll-padding-top:160px; box-shadow:0 24px 80px rgb(17 45 51 / .24); }
+    dialog::backdrop { background:rgb(12 30 37 / .6); }
+    .dialog-top { position:sticky; top:-28px; z-index:1; display:flex; justify-content:space-between; gap:16px; align-items:start; margin:-28px -28px 18px; padding:28px; background:var(--white); border-bottom:1px solid var(--line); }
+    .dialog-top > div { flex:1; min-width:0; }
+    .dialog-top h2 { overflow-wrap:anywhere; margin-bottom:0; }
+    .close { min-width:44px; min-height:44px; border:1px solid var(--line); border-radius:7px; background:var(--white); color:var(--green); font-weight:700; }
+    .close:hover { background:var(--mint); }
+    dialog p,dialog li { font-size:.92rem; }
+    dialog li+li { margin-top:8px; }
+    .prompt { background:var(--nav); color:var(--white); border-radius:8px; padding:16px; margin:18px 0; }
+    pre { font: .79rem/1.7 Consolas,monospace; white-space:pre-wrap; overflow-wrap:anywhere; margin:0 0 12px; }
+    .prompt button { min-height:44px; padding:8px 12px; background:var(--white); color:var(--green); border:1px solid #b7c8b6; border-radius:4px; font-weight:700; }
+    .prompt button:focus-visible { outline-color:#efbc77; }
+    .prompt button:disabled { color:#cad1c5; background:#415248; cursor:not-allowed; }
+    .prompt .status { color:#e7efe0; }
+    .prompt .status.error { color:#ffd9bc; }
+    .source { display:inline-flex; align-items:center; gap:4px; min-height:32px; }
+    .status { font-size:.82rem; color:var(--green); min-height:26px; margin-top:12px; }
+    .status.error { color:#993d26; }
+    .readme-section { margin-bottom:28px; }
+    .readme-section h3 { margin:20px 0 10px; font-size:1rem; }
+    .readme-section li+li { margin-top:8px; }
+    .readme-section pre { padding:14px; border:1px solid var(--line); border-radius:7px; background:var(--soft); color:var(--ink); }
+    .readme-section code { font-family:Consolas,monospace; overflow-wrap:anywhere; }
+    .readme-section a:not(.action) { overflow-wrap:anywhere; }
+    .readme-section ol,.readme-section ul { padding-left:24px; }
+    .readme-lead { max-width:68ch; }
+    .overview-hero { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:center; gap:32px; padding:24px 28px; margin-bottom:18px; border:1px solid var(--line); border-radius:14px; background:var(--white); box-shadow:var(--shadow); }
+    .hero-copy { min-width:0; }
+    .hero-copy .eyebrow { margin-bottom:10px; }
+    .hero-copy .actions { margin-bottom:0; }
+    .intent-line { margin:0 0 16px; font-size:1.05rem; line-height:1.45; font-weight:600; color:var(--green); text-wrap:balance; }
+    .lifecycle-overview { min-width:0; margin:0; }
+    .overview-loop { position:relative; padding-left:30px; }
+    .iteration-loop { position:absolute; inset:0; width:100%; height:100%; color:var(--green); pointer-events:none; }
+    .iteration-loop-label { font:600 12px "Segoe UI",system-ui,sans-serif; fill:currentColor; stroke:var(--white); stroke-width:5px; paint-order:stroke; stroke-linejoin:round; }
+    .readme-section .overview-stages { position:relative; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin:0; padding:0; list-style:none; }
+    .readme-section .overview-stages li { position:relative; display:flex; flex-direction:column; gap:4px; min-width:0; margin:0; padding:10px 12px; border:1px solid #d4e0dc; border-radius:8px; background:var(--soft); color:var(--ink); }
+    .overview-stages .stage-owner { display:flex; align-items:center; gap:6px; color:#3c6257; font-size:.7rem; line-height:1.25; font-weight:750; letter-spacing:.04em; text-transform:uppercase; }
+    .overview-stages .stage-index { display:grid; place-items:center; flex-shrink:0; width:18px; height:18px; border-radius:50%; background:#dbe9e3; color:var(--green); font-size:.65rem; font-variant-numeric:tabular-nums; }
+    .overview-stages strong { font-size:1.05rem; line-height:1.15; }
+    .overview-stages .stage-summary { font-size:.8rem; line-height:1.4; color:var(--muted); }
+    .readme-section .overview-stages li:nth-child(3) { grid-column:2; grid-row:2; }
+    .readme-section .overview-stages li:nth-child(4) { grid-column:1; grid-row:2; }
+    .overview-stages .stage-connector { position:absolute; display:block; right:-21px; top:50%; width:20px; height:20px; color:var(--green); transform:translateY(-50%); pointer-events:none; }
+    .overview-stages .stage-connector svg { display:block; width:100%; height:100%; overflow:visible; }
+    .overview-stages .stage-transition { right:auto; left:50%; top:auto; bottom:-21px; transform:translateX(-50%) rotate(90deg); }
+    .overview-stages .stage-return { right:auto; left:-21px; transform:translateY(-50%) rotate(180deg); }
+    .readme-section .overview-stages .human-stage { border-color:var(--green); background:var(--green); color:var(--white); }
+    .overview-stages .human-stage .stage-owner,.overview-stages .human-stage .stage-summary { color:var(--white); }
+    .overview-stages .human-stage .stage-index { background:#0d4c3d; color:var(--white); }
+    .lifecycle-overview figcaption { margin-top:8px; max-width:70ch; color:var(--muted); font-size:.8rem; }
+    .authority { border-left:3px solid var(--green); padding:12px 16px; background:var(--mint); border-radius:0 7px 7px 0; font-size:.9rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0; }
+    .action { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 16px; border:1px solid var(--green); border-radius:7px; text-decoration:none; font-size:.88rem; font-weight:700; }
+    .action.primary { background:var(--green); color:var(--white); }
+    .action:hover { background:var(--mint); color:var(--green); }
+    .project-types { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; list-style:none; padding:0!important; }
+    .project-types li { display:flex; flex-direction:column; min-width:0; margin:0!important; padding:14px; border:1px solid var(--line); border-radius:9px; background:var(--white); }
+    .project-types strong { display:block; margin-bottom:6px; font-size:.95rem; line-height:1.35; }
+    .project-description { font-size:.88rem; line-height:1.5; color:var(--muted); }
+    .project-types .source { margin-top:auto; padding-top:12px; font-size:.82rem; font-weight:600; }
+    .readme-panel { margin:10px 0; padding:0 16px; border:1px solid var(--line); border-radius:8px; background:var(--white); }
+    .readme-panel summary { min-height:48px; padding:12px 0; cursor:pointer; font-weight:650; }
+    .readme-panel summary:hover { color:var(--green); }
+    .readme-panel[open] { padding-bottom:16px; }
+    .readme-panel[open] summary { margin-bottom:8px; }
+    .readme-slide { display:block; width:100%; height:auto; border-radius:4px; }
+    .benefits { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 32px; }
+    .benefits li { margin:0!important; }
+    .readme-table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:.88rem; margin:12px 0 18px; }
+    .readme-table th,.readme-table td { border-bottom:1px solid var(--line); padding:10px; text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+    .readme-table th { color:var(--green); background:var(--soft); }
+    .quiet { color:var(--muted); font-size:.85rem; }
+    .reference-links { display:flex; flex-wrap:wrap; gap:8px 20px; list-style:none; padding:0!important; }
+    .reference-links li { margin:0!important; }
+    .reference-links a { display:inline-flex; align-items:center; min-height:32px; }
+    #before-you-start,#flow,#reference,#optional-setup { padding-top:24px; border-top:1px solid var(--line); }
+    #reference { margin-top:28px; }
+    #new-project > .setup-steps { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; margin:18px 0; padding:0; list-style:none; }
+    .setup-steps > li { display:grid; grid-template-columns:32px minmax(0,1fr); gap:12px; min-width:0; margin:0!important; }
+    .setup-number { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--mint); color:var(--green); font-size:.9rem; font-weight:750; }
+    .setup-step-content { min-width:0; }
+    .quickstart-panel > summary h3 { display:inline; margin:0; font-size:1.15rem; }
+    .setup-step-content h4 { margin:3px 0 6px; font-size:1rem; }
+    .setup-step-content > p { max-width:78ch; margin-bottom:8px; }
+    .setup-step-content .readme-panel { margin:8px 0 0; }
+    .command-kind { margin:0 0 6px; color:var(--muted); font-size:.75rem; font-weight:650; }
+    .startup-type { display:block; width:100%; max-width:480px; min-height:44px; margin:8px 0; padding:9px 12px; border:1px solid var(--control); border-radius:7px; background:var(--white); color:var(--ink); }
+    .readme-section .prompt pre { margin:0 0 12px; padding:0; border:0; background:none; color:inherit; }
+    #bootstrap-status:empty { min-height:0; margin:0; }
+    #domain-info { width:min(760px,calc(100% - 28px)); padding:24px; }
+    .domain-header { position:sticky; top:-24px; z-index:1; display:flex; justify-content:space-between; align-items:start; gap:16px; margin:-24px -24px 16px; padding:24px; background:var(--white); border-bottom:1px solid var(--line); }
+    .domain-heading { flex:1; min-width:0; }
+    .domain-header h2 { margin:4px 0 0; }
+    .domain-header .eyebrow { margin:0; }
+    .domain-layout { margin:16px 0; }
+    .domain-layout h3 { margin:0 0 12px; font-size:1rem; }
+    .domain-rule-list { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
+    .domain-rule-list li { display:grid; grid-template-columns:26px minmax(0,1fr); gap:10px; padding:14px; border:1px solid var(--line); border-radius:9px; }
+    .domain-rule-number { display:grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--mint); color:var(--green); font-size:.8rem; font-weight:750; }
+    .domain-rule-list h4 { margin:2px 0 6px; font-size:.95rem; }
+    .domain-rule-list p { margin:0; font-size:.88rem; }
+    .domain-rule-list .source { margin-top:6px; font-size:.8rem; }
+    .domain-proof-note { margin:0; padding:12px 14px; border-left:3px solid var(--green); border-radius:0 6px 6px 0; background:var(--mint); font-size:.84rem; }
+    @media(max-width:650px) { #domain-info { padding:20px; } .domain-header { top:-20px; margin:-20px -20px 16px; padding:20px; } }
+    @media(max-height:550px) { .domain-header { position:static; } }
+    @media(max-width:900px) {
+      .overview-hero { grid-template-columns:minmax(0,1fr); gap:20px; }
+      .readme-section .overview-stages { grid-template-columns:repeat(4,minmax(0,1fr)); }
+      .overview-loop { padding:0 30px 36px; }
+      .readme-section .overview-stages li:nth-child(3),.readme-section .overview-stages li:nth-child(4) { grid-column:auto; grid-row:auto; }
+      .overview-stages .stage-transition,.overview-stages .stage-return { right:-21px; left:auto; top:50%; bottom:auto; transform:translateY(-50%); }
+      .project-types { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media(max-width:650px) {
+      main { width:calc(100% - 28px); margin-top:20px; }
+      .top { padding:14px; gap:14px; }
+      .top a { font-size:.74rem; }
+      .top { flex-wrap:wrap; }
+      header:has(.menu-toggle[hidden]) { position:static; }
+      .top-nav { flex-basis:100%; justify-content:flex-start; gap:4px 14px; }
+      .project-types,.benefits { grid-template-columns:minmax(0,1fr); }
+      .overview-hero { padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+      .readme-section .overview-stages { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .overview-loop { padding:0 0 0 30px; }
+      .readme-section .overview-stages li:nth-child(3) { grid-column:2; grid-row:2; }
+      .readme-section .overview-stages li:nth-child(4) { grid-column:1; grid-row:2; }
+      .overview-stages .stage-transition { right:auto; left:50%; top:auto; bottom:-21px; transform:translateX(-50%) rotate(90deg); }
+      .overview-stages .stage-return { right:auto; left:-21px; top:50%; bottom:auto; transform:translateY(-50%) rotate(180deg); }
+      .readme-panel { padding:0 14px; }
+      .readme-panel[open] { padding-bottom:14px; }
+      .readme-table th,.readme-table td { padding:8px 6px; }
+      .intro { display:block; }
+      .intro .pill { margin-bottom:8px; }
+      .canvas { padding:20px 12px; }
+      .node { padding:12px; gap:10px; }
+      .node .number { width:29px; height:29px; }
+      .node strong { font-size:.94rem; }
+      .fork { grid-template-columns:minmax(0,1fr); gap:22px; padding-top:0; }
+      .fork::before,.lane::before { display:none; }
+      .infra-lane { margin-top:5px; padding-top:8px; }
+      .infra-lane .lane-label::after { content:" — separate work, not the next app step"; display:block; letter-spacing:0; text-transform:none; font-weight:500; margin-top:5px; }
+      .choice { font-size:.82rem; padding:9px 10px; }
+      dialog { padding:22px; }
+      .dialog-top { top:-22px; margin:-22px -22px 18px; padding:22px; }
+      .dialog-top h2 { font-size:1.35rem; }
+    }
+    @media(max-height:550px) { .dialog-top { position:static; } dialog { scroll-padding-top:16px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+  <style id="v2-flow-styles">
+#flow, #info { color-scheme: light; --paper: #f6f4ee; --white: #fffdf8; --ink: #20323a; --muted: #536269; --green: #173b35; --mint: #e6eee5; --line: #bbc8bb; --amber: #7a491b; --sand: #fff0db; --focus: #ae4d24; --blue: #234f75; }
+#flow *, #info * { box-sizing: border-box; }
+#flow, #info { font:16px / 1.55 "Segoe UI", Aptos, system-ui, sans-serif; color:var(--ink); }
+#flow a, #info a { color: var(--green); text-underline-offset: 0.2em; }
+#flow a:hover, #info a:hover { color: var(--focus); }
+#flow button, #info button, #flow input, #info input { font: inherit; }
+#flow button, #info button, #flow a, #info a { touch-action: manipulation; }
+#flow button, #info button { cursor: pointer; }
+#flow :focus-visible, #info :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+#flow [hidden], #info [hidden] { display: none !important; }
+#flow h1, #info h1, #flow h2, #info h2 { font-family: Georgia, "Times New Roman", serif; text-wrap: balance; }
+#flow h1, #info h1 { margin: 8px 0px 12px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.13; letter-spacing: -0.035em; }
+#flow h2, #info h2 { margin: 0px 0px 14px; font-size: 1.7rem; line-height: 1.2; }
+#flow p, #info p { margin: 0px 0px 14px; }
+#flow .intro, #info .intro { display: flex; justify-content: space-between; gap: 30px; align-items: start; margin-bottom: 22px; }
+#flow .intro p, #info .intro p { color: var(--muted); max-width: 65ch; }
+#flow .eyebrow, #info .eyebrow { color: var(--green); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+#flow .pill, #info .pill { display: inline-block; padding: 4px 9px; border-radius: 4px; background: var(--mint); color: var(--green); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+#flow .pill.planned, #info .pill.planned { color: var(--amber); background: var(--sand); }
+#flow .legend, #info .legend { margin-top: 12px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.77rem; color: var(--muted); }
+#flow .legend span, #info .legend span { display: flex; align-items: center; gap: 6px; }
+#flow .legend i, #info .legend i { width: 17px; height: 3px; background: var(--green); }
+#flow .legend .separate, #info .legend .separate { border-top: 2px dashed rgb(156, 106, 53); height: 0px; background: none; }
+#flow .canvas, #info .canvas { background: var(--white); border: 1px solid rgb(213, 220, 209); border-radius: 12px; padding: 26px clamp(14px, 4vw, 46px); }
+#flow .start, #info .start { width: max-content; margin: auto; border: 2px solid var(--green); background: var(--green); color: var(--white); border-radius: 40px; padding: 9px 35px; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.1em; }
+#flow .arrow, #info .arrow { height: 25px; width: 2px; background: var(--line); margin: auto; position: relative; }
+#flow .arrow::after, #info .arrow::after { content: ""; position: absolute; width: 7px; height: 7px; border-right: 2px solid var(--line); border-bottom: 2px solid var(--line); transform: rotate(45deg); left: -2.5px; bottom: 0px; }
+#flow .decision, #info .decision { text-align: center; border: 1px solid rgb(214, 187, 149); border-radius: 7px; background: var(--sand); padding: 16px 16px 12px; }
+#flow .decision-title, #info .decision-title { display: flex; justify-content: center; align-items: center; gap: 11px; font-size: 0.91rem; font-weight: 750; }
+#flow .diamond, #info .diamond { width: 16px; height: 16px; transform: rotate(45deg); border: 2px solid rgb(151, 97, 43); background: rgb(255, 252, 244); flex-shrink: 0; }
+#flow .choices, #info .choices { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+#flow .choice, #info .choice { min-height: 44px; padding: 9px 13px; border: 1px solid rgb(159, 170, 156); border-radius: 5px; background: var(--white); color: var(--green); font-size: 0.82rem; font-weight: 650; }
+#flow .choice:hover, #info .choice:hover { background: var(--mint); border-color: var(--green); }
+#flow .choice[aria-pressed="true"], #info .choice[aria-pressed="true"] { color: var(--white); background: var(--green); border-color: var(--green); }
+#flow .choice[aria-pressed="true"]:focus-visible, #info .choice[aria-pressed="true"]:focus-visible { outline-offset: 4px; }
+#flow .scenario, #info .scenario { min-height: 48px; padding: 14px 0px 0px; color: var(--muted); text-align: center; font-size: 0.81rem; }
+#flow .spine, #info .spine { width: min(650px, 100%); margin: auto; }
+#flow .node, #info .node { display: flex; align-items: center; gap: 15px; width: 100%; text-align: left; min-height: 70px; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 4px solid var(--green); border-radius: 7px; padding: 14px 18px; background: var(--white); color: var(--ink); }
+#flow .node:hover, #info .node:hover { background: var(--mint); border-color: var(--green); }
+#flow .node .number, #info .node .number { width: 34px; height: 34px; border: 1px solid rgb(180, 199, 184); border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; font-weight: 800; color: var(--green); flex-shrink: 0; font-variant-numeric: tabular-nums; }
+#flow .node .text, #info .node .text { flex: 1 1 0%; min-width: 0px; }
+#flow .node strong, #info .node strong { display: block; font-size: 0.92rem; }
+#flow .node small, #info .node small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
+#flow .node .more, #info .node .more { color: var(--green); font-size: 1.3rem; font-weight: 600; }
+#flow .node.context, #info .node.context { border-color: rgb(213, 221, 211); background: rgb(240, 241, 235); }
+#flow .node.context strong, #info .node.context strong, #flow .node.context .number, #info .node.context .number { color: rgb(87, 102, 91); }
+#flow .node.blocked, #info .node.blocked { border-color: rgb(201, 155, 99) rgb(201, 155, 99) rgb(201, 155, 99) rgb(151, 97, 43); background: var(--sand); }
+#flow .node.end, #info .node.end { background: var(--mint); }
+#flow .node.tiny, #info .node.tiny { min-height: 61px; padding: 12px 14px; }
+#flow .controls, #info .controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 15px 0px 0px; }
+#flow .check, #info .check { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 0.83rem; padding: 9px 12px; border: 1px solid rgb(184, 200, 184); border-radius: 6px; background: var(--white); }
+#flow .check input, #info .check input { width: 18px; height: 18px; accent-color: var(--green); margin: 0px; }
+#flow .dev-decision, #info .dev-decision { margin-top: 14px; }
+#flow .dev-note, #info .dev-note { border-left: 3px solid rgb(151, 97, 43); border-radius: 0px 5px 5px 0px; padding: 12px 14px; color: var(--amber); background: var(--sand); font-size: 0.79rem; margin: 14px 0px 0px; }
+#flow .fork, #info .fork { position: relative; display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr); gap: 30px; padding-top: 23px; margin-top: 2px; }
+#flow .fork::before, #info .fork::before { content: ""; position: absolute; top: 0px; left: 25%; right: 25%; border-top: 2px solid var(--line); }
+#flow .lane, #info .lane { min-width: 0px; }
+#flow .lane::before, #info .lane::before { content: ""; height: 20px; border-left: 2px solid var(--line); display: block; width: 2px; margin: -23px auto auto; }
+#flow .lane-label, #info .lane-label { text-align: center; color: var(--green); font-size: 0.71rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin: 12px 0px; }
+#flow .infra-lane, #info .infra-lane { padding: 0px 15px 18px; border: 1px dashed rgb(186, 147, 101); border-radius: 7px; background: rgb(253, 248, 237); }
+#flow .infra-lane .lane-label, #info .infra-lane .lane-label { color: var(--amber); }
+#flow .infra-lane .node, #info .infra-lane .node { border-left-color: rgb(151, 97, 43); }
+#flow .infra-lane .node:hover, #info .infra-lane .node:hover { background: var(--sand); border-color: rgb(151, 97, 43); }
+#flow .infra-lane .arrow, #info .infra-lane .arrow { background: rgb(196, 166, 124); }
+#flow .infra-lane .arrow::after, #info .infra-lane .arrow::after { border-color: rgb(196, 166, 124); }
+#flow .loop, #info .loop { border: 1px solid rgb(188, 205, 189); background: var(--mint); border-radius: 5px; padding: 10px; margin-top: 10px; font-size: 0.74rem; color: var(--green); text-align: center; }
+#flow .loop span, #info .loop span { white-space: normal; }
+#flow .lane-note, #info .lane-note { color: var(--muted); font-size: 0.76rem; margin: 13px 0px 0px; text-align: center; }
+#flow .join, #info .join { text-align: center; font-size: 0.76rem; color: var(--amber); padding: 17px 20px; margin-top: 18px; border-block: 1px dashed rgb(198, 173, 134); }
+#flow .finish, #info .finish { width: min(650px, 100%); margin: auto; }
+#flow .version-note, #info .version-note { margin: 22px 0px 0px; color: var(--muted); font-size: 0.78rem; }
+#info { width: min(570px, 100% - 28px); max-height: 85dvh; border: 1px solid rgb(183, 200, 182); border-radius: 12px; padding: 28px; color: var(--ink); background: var(--white); overflow: auto; overscroll-behavior: contain; }
+#info::backdrop { background: rgba(18, 34, 30, 0.55); }
+#flow .dialog-top, #info .dialog-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 18px; }
+#flow .close, #info .close { min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 5px; background: var(--white); color: var(--green); font-weight: 700; }
+#flow .close:hover, #info .close:hover { background: var(--mint); }
+#info p, #info li { font-size: 0.92rem; }
+#info li + li { margin-top: 8px; }
+#flow .prompt, #info .prompt { background: rgb(32, 54, 48); color: var(--white); border-radius: 6px; padding: 16px; margin: 18px 0px; }
+#flow pre, #info pre { font: 0.79rem / 1.7 Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0px 0px 12px; }
+#flow .prompt button, #info .prompt button { min-height: 44px; padding: 8px 12px; background: var(--white); color: var(--green); border: 1px solid rgb(183, 200, 182); border-radius: 4px; font-weight: 700; }
+#flow .prompt button:focus-visible, #info .prompt button:focus-visible { outline-color: rgb(239, 188, 119); }
+#flow .prompt button:disabled, #info .prompt button:disabled { color: rgb(202, 209, 197); background: rgb(65, 82, 72); cursor: not-allowed; }
+#flow .prompt .status, #info .prompt .status { color: rgb(231, 239, 224); }
+#flow .prompt .status.error, #info .prompt .status.error { color: rgb(255, 217, 188); }
+#flow .source, #info .source { display: inline-flex; align-items: center; min-height: 32px; }
+#flow .status, #info .status { font-size: 0.82rem; color: var(--green); min-height: 26px; margin-top: 12px; }
+#flow .status.error, #info .status.error { color: rgb(153, 61, 38); }
+@media (max-width: 650px) {
+#flow .intro, #info .intro { display: block; }
+#flow .intro .pill, #info .intro .pill { margin-bottom: 8px; }
+#flow .canvas, #info .canvas { padding: 20px 12px; }
+#flow .node, #info .node { padding: 12px; gap: 10px; }
+#flow .node .number, #info .node .number { width: 29px; height: 29px; }
+#flow .node strong, #info .node strong { font-size: 0.86rem; }
+#flow .fork, #info .fork { grid-template-columns: minmax(0px, 1fr); gap: 22px; padding-top: 0px; }
+#flow .fork::before, #info .fork::before, #flow .lane::before, #info .lane::before { display: none; }
+#flow .infra-lane, #info .infra-lane { margin-top: 5px; padding-top: 8px; }
+#flow .infra-lane .lane-label::after, #info .infra-lane .lane-label::after { content: " — separate work, not the next app step"; display: block; letter-spacing: 0px; text-transform: none; font-weight: 500; margin-top: 5px; }
+#flow .choice, #info .choice { font-size: 0.77rem; padding: 9px 10px; }
+#info { padding: 22px; }
+}
+#flow { width:calc(100% + 8px); max-width:1040px; margin-left:50%; margin-right:0; transform:translateX(-50%); border:0; background:var(--paper); }
+#flow h1, #flow h2, #info h2 { font-weight:700; color:inherit; letter-spacing:normal; }
+#flow .flow-heading { margin:8px 0 12px; font-size:clamp(2rem,4vw,3.2rem); line-height:1.13; letter-spacing:-.035em; }
+#flow .canvas { box-shadow:none; }
+#flow .check { min-height:0; }
+#flow .node small { line-height:inherit; }
+#flow .pill, #info .pill { line-height:inherit; }
+#flow .source, #info .source { gap:normal; }
+#flow #map-status:empty { min-height:26px; margin-top:12px; }
+#info { box-shadow:none; scroll-padding-top:0; }
+#info .dialog-top { position:static; top:auto; z-index:auto; margin:0 0 18px; padding:0; background:transparent; border:0; }
+#info .dialog-top > div { flex:0 1 auto; min-width:auto; }
+#info .dialog-top h2 { overflow-wrap:normal; margin:0 0 14px; font-size:1.7rem; }
+@media(max-width:650px) { #flow { width:100%; } }
+  </style>
+  <style id="v5-guide-styles">
+    #overview .overview-seed-link { color:inherit; text-decoration:none; }
+    #overview .overview-seed-link:hover { color:inherit; text-decoration:underline; }
+    #flow a.node { text-decoration:none; }
+    #flow .quickstart-destination { color:var(--green); font-weight:650; }
+    #flow .v5-responsibility-group { min-inline-size:0; margin:0; padding:14px 16px 18px; border:1px solid var(--line); border-radius:9px; }
+    #flow .v5-responsibility-group legend { padding:0 10px; color:var(--green); font-size:.9rem; font-weight:750; }
+    #flow .v5-human-work { border-color:#b59063; }
+    #flow .v5-human-work legend { color:var(--amber); }
+    #flow .v5-ai-work { border-color:#789189; }
+    #flow .v5-ownership-note { margin:0 0 14px; color:var(--muted); font-size:.82rem; }
+    .workflow-return { display:inline-flex; align-items:center; min-height:36px; margin-top:8px; font-size:.85rem; font-weight:650; }
+    @media(max-width:650px) { #flow .v5-responsibility-group { padding:10px 10px 14px; } }
+  </style>
+  <style id="step-details-panel-styles">
+    #flow [data-info] .more { display:inline-grid; place-items:center; width:1.25rem; flex-shrink:0; }
+    #info {
+      position:fixed; inset:12px auto auto 12px; margin:0; z-index:100;
+      width:min(460px,calc(100% - 24px)); max-width:calc(100% - 24px); height:auto; max-height:calc(100dvh - 24px);
+      padding:24px; border-radius:12px;
+      box-shadow:-16px 0 56px rgb(11 18 32 / .18);
+      transform:translateX(-8px); opacity:0;
+      transition:transform 200ms ease, opacity 200ms ease, display 200ms allow-discrete;
+    }
+    #info[open] { transform:translateX(0); opacity:1; }
+    #info .dialog-top { top:-24px; margin:-24px -24px 20px; padding:24px; }
+    #info .dialog-top > div { flex:1; min-width:0; }
+    #info .dialog-top h2 { overflow-wrap:anywhere; }
+    #info .close { flex-shrink:0; font-size:1.35rem; line-height:1; }
+    @starting-style { #info[open] { transform:translateX(-8px); opacity:0; } }
+    @media(max-height:500px) { #info .dialog-top { position:static; } }
+    @media(prefers-reduced-motion:reduce) { #info { transition:none; } }
+  </style>
+  <link rel="stylesheet" href="assets/workstation-setup-v13.css">
+  <link rel="stylesheet" href="assets/life-cycle-velocity.css">
+  <link rel="stylesheet" href="assets/workstation-setup-v1.css">
+  <link rel="stylesheet" href="assets/workstation-setup-v23.css">
+  <script src="assets/workstation-setup-v23.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#readme">Skip to content</a>
+  <header><div class="top"><div class="brand" translate="no"><img src="assets/twtty-mark-velocity.svg" width="34" height="34" alt=""><span class="v20-brand-word">TWTTY&trade;<small>Software Engineering Factory</small></span></div><button class="menu-toggle" id="toggle-nav" type="button" aria-controls="page-nav" aria-expanded="false" hidden>Contents</button><nav class="top-nav" id="page-nav" aria-label="Page sections"><a href="#overview">Overview</a><a href="#flow">Workflow</a><a href="?workflow=new#flow" data-workflow-link="new">Get Started</a><a href="#reference">Reference</a></nav></div></header>
+  <main id="readme">
+    <section id="overview" class="readme-section" aria-labelledby="overview-title">
+      <div class="overview-hero">
+      <div class="hero-copy">
+      <h1 id="overview-title">TWTTY&trade;</h1>
+      <p class="v20-brand-descriptor">Software Engineering Factory</p>
+      <p class="intent-line">Intent-Driven. AI-Orchestrated.</p>
+      <div class="readme-lead">
+        <p><strong>Tell Me What To Tell You (TWTTY)</strong> is an agentic enterprise engineering framework that inverts responsibility for orchestrating AI—from humans to AI. It removes the burden of prompt engineering: rather than requiring people to direct every step, AI identifies what it needs, asks the right questions, and steers complex engineering work toward desired business outcomes.</p>
+      </div>
+      <div class="actions"><a class="action primary" href="#flow">Explore the Workflow <span aria-hidden="true">&nbsp;&darr;</span></a><a class="action" href="?workflow=new#flow" data-workflow-link="new">Get Started</a></div>
+      </div>
+      <figure class="lifecycle-overview">
+        <div class="overview-loop">
+        <ol class="overview-stages" role="list" aria-label="Four lifecycle stages: your intent, then AI-led delivery">
+          <li class="human-stage"><span class="stage-owner"><span class="stage-index" aria-hidden="true">01</span>Your part</span><a class="overview-seed-link" href="?workflow=new#flow" data-workflow-link="new"><strong translate="no">SEED</strong></a><span class="stage-summary">Set your intent</span><span class="stage-connector" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M0 10H20M14 4L20 10L14 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+          <li><span class="stage-owner"><span class="stage-index" aria-hidden="true">02</span>AI-led</span><strong translate="no">SPEC</strong><span class="stage-summary">Requirements</span><span class="stage-connector stage-transition" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M0 10H20M14 4L20 10L14 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+          <li><span class="stage-owner"><span class="stage-index" aria-hidden="true">03</span>AI-led</span><strong translate="no">PLAN</strong><span class="stage-summary">Work, risks &amp; gates</span><span class="stage-connector stage-return" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M0 10H20M14 4L20 10L14 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></li>
+          <li><span class="stage-owner"><span class="stage-index" aria-hidden="true">04</span>AI-led</span><strong translate="no">EXECUTE</strong><span class="stage-summary">Deliver &amp; verify</span></li>
+        </ol>
+        <svg class="iteration-loop" role="img" aria-label="Next iteration: EXECUTE returns to SEED" focusable="false" hidden>
+          <defs><marker id="overview-iteration-arrowhead" viewBox="0 0 7 8" refX="7" refY="4" markerWidth="7" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L7 4L0 8" fill="currentColor"/></marker></defs>
+          <path id="iteration-loop-path" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#overview-iteration-arrowhead)"/>
+          <text class="iteration-loop-label" id="iteration-loop-label" text-anchor="middle" dominant-baseline="middle" aria-hidden="true">Next iteration</text>
+        </svg>
+        <noscript><p class="quiet">Next iteration: EXECUTE &rarr; SEED.</p></noscript>
+        </div>
+        <figcaption>AI runs the workflow. Required human decisions and approvals still apply.</figcaption>
+      </figure>
+      </div>
+        <p class="authority"><strong>AI drives the workflow. Humans retain authority over intent, boundaries, and consequential decisions.</strong></p>
+      <h2>What can you build?</h2>
+      <p>Choose the project type that matches your work:</p>
+      <ul class="project-types">
+        <li><strong>Software development</strong><span class="project-description">Applications, services, APIs, CLIs, and libraries.</span><a class="source" href="?workflow=new&amp;project-type=sdlc#flow" data-project-type="sdlc">Explore Software Workflow <span aria-hidden="true">&rarr;</span></a></li>
+        <li><strong>Agentic AI applications</strong><span class="project-description">LLM-driven applications and agents with evaluation, safety, and cost controls.</span><a class="source" href="?workflow=new&amp;project-type=sdlc-for-agentic-apps#flow" data-project-type="sdlc-for-agentic-apps">Explore AI App Workflow <span aria-hidden="true">&rarr;</span></a></li>
+        <li><strong>Data engineering</strong><span class="project-description">Batch and streaming data pipelines, with data-quality, contract, freshness, and lineage controls.</span><a class="source" href="life-cycle-workstation.html#data-flow" data-reference-section="data-flow" data-project-type="dataeng">Explore Data Engineering Context <span aria-hidden="true">&rarr;</span></a></li>
+        <li><strong>Reverse Engineering</strong><span class="project-description">Read-only investigation of existing systems to produce evidence-backed documentation and findings.</span><a class="source" href="life-cycle-workstation.html#assessment-flow" data-reference-section="assessment-flow" data-project-type="reverse-engineering">Explore Reverse Engineering Workflow <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+      <p class="quiet">TWTTY is an extensible framework. New specializations can be added for other engineering disciplines and workflows, building on the same core methodology.</p>
+      <details class="readme-panel" id="risk-controls">
+        <summary id="risk-title">Rigor that scales with risk</summary>
+        <p>The <a href="life-cycle-workstation.html#controls" data-reference-section="controls">SDLC risk ladder</a> defines L1-L5.</p>
+        <table class="readme-table">
+          <thead><tr><th scope="col">Level</th><th scope="col">Intended use</th></tr></thead>
+          <tbody>
+            <tr><td><strong>L1</strong></td><td>Throwaway prototype or experiment; non-production.</td></tr>
+            <tr><td><strong>L2</strong></td><td>Internal workflow with a low blast radius.</td></tr>
+            <tr><td><strong>L3</strong></td><td>Team-facing deliverable with moderate stakes.</td></tr>
+            <tr><td><strong>L4</strong></td><td>Customer-facing or revenue-impacting work.</td></tr>
+            <tr><td><strong>L5</strong></td><td>Regulated, safety-critical, or mission-critical work.</td></tr>
+          </tbody>
+        </table>
+        <p>Levels change the required verification, security, and review controls, not who owns the intent. L1 does not waive required privacy or approval controls. Autopilot is a separate, explicitly authorized execution choice.</p>
+        <p><strong>Reverse engineering</strong> uses its own three assessment-depth levels: <strong>1 — Orientation snapshot</strong>, <strong>2 — Contributor-ready assessment (default)</strong>, and <strong>3 — High-consequence assessment</strong>. These are not equivalent to the SDLC risk levels. <a href="life-cycle-workstation.html#combined" data-reference-section="combined">Explore assessment-to-implementation handover</a>.</p>
+      </details>
+      <details class="readme-panel" id="why-twtty">
+        <summary>Why TWTTY?</summary>
+        <div class="why-promise">
+          <p class="eyebrow">Intent-led. Whole-system. Human-controlled.</p>
+          <h3>See the whole solution.<br>Not just the next piece of code.</h3>
+          <p>Tell TWTTY what you want to achieve and what done looks like. AI connects the experience, architecture, APIs, data and infrastructure into a coherent delivery plan, with security, quality, governance, cost and operations considered throughout. It then guides approved implementation and verification against those outcomes.</p>
+          <p class="why-authority">AI drives the workflow. You retain authority over scope and consequential decisions.</p>
+        </div>
+        <div class="why-grid">
+          <section class="why-card" aria-labelledby="why-whole-title">
+            <span class="why-index" aria-hidden="true">01</span><h4 id="why-whole-title">See the whole solution</h4>
+            <ul>
+              <li><strong>Intent-led engineering.</strong><span>Without the prompt-engineering burden.</span></li>
+              <li><strong>End-to-end SDLC.</strong><span>From discovery to deployment and operations.</span></li>
+              <li><strong>Whole-system architecture and design.</strong><span>UI, APIs, data and infrastructure, connected by requirements, contracts and real dependencies.</span></li>
+              <li><strong>Experience the design before implementation.</strong><span>Professional wireframes and high-fidelity, runnable prototypes with working user flows.</span></li>
+              <li><strong>APIs as consumer contracts.</strong><span>Versioning, compatibility and deliberate breaking-change policies.</span></li>
+              <li><strong>Specializations beyond code generation.</strong><span>Software, AI apps, data engineering and evidence-backed, read-only reverse engineering.</span></li>
+            </ul>
+          </section>
+          <section class="why-card" aria-labelledby="why-confidence-title">
+            <span class="why-index" aria-hidden="true">02</span><h4 id="why-confidence-title">Deliver with confidence</h4>
+            <ul>
+              <li><strong>Built-in governance.</strong><span>Human authority, explicit approvals and organizational policies.</span></li>
+              <li><strong>Risk-matched rigor.</strong><span>SDLC L1-L5: applicable reviews, scans, tests and gate evidence.</span></li>
+              <li><strong>AI evaluations. Data quality.</strong><span>Real-service smoke at L1; formal verification at higher levels or when explicitly selected/required.</span></li>
+              <li><strong>Prompt execution logs.</strong><span>Approved prompts and outcomes in append-only, version-controlled history.</span></li>
+              <li><strong>Models and budgets by choice.</strong><span>Model/escalation policies and separate budgets for building and running AI applications.</span></li>
+              <li><strong>Bounded recovery.</strong><span>Retry, refine or escalate explicitly, rather than silently weaken the goal.</span></li>
+            </ul>
+          </section>
+          <section class="why-card" aria-labelledby="why-way-title">
+            <span class="why-index" aria-hidden="true">03</span><h4 id="why-way-title">Scale with your team</h4>
+            <ul>
+              <li><strong>Your stack. Your standards.</strong><span>Your control, with interactive decisions or explicitly scoped delegation.</span></li>
+              <li><strong>Project-owned configuration.</strong><span>Approved overrides, reusable settings and deliberate refresh without losing customizations.</span></li>
+              <li><strong>Repeatable engineering.</strong><span>Carry approved recipes, verification practices and recorded decisions across developers and iterations.</span></li>
+              <li><strong>Agents, skills and tools.</strong><span>Assembled on demand through pluggable harness and development-platform bindings.</span></li>
+              <li><a href="life-cycle-workstation.html#collaboration" data-reference-section="collaboration"><strong>Built for team development.</strong></a><span>Coordinate parallel work through domains, work claims, isolated worktrees and planned integration.</span></li>
+              <li><strong>Iterative development.</strong><span>Evolve without starting over.</span></li>
+              <li><strong>Reusable project skills.</strong><span>Capture useful expertise. Less reinvention.</span></li>
+              <li><strong>Continuity across sessions.</strong><span>Recover scope and responsibility, then continue only assigned work or a separately approved handover.</span></li>
+            </ul>
+          </section>
+        </div>
+        <div class="why-depth"><p>Explore the capabilities behind the benefits: configuration choices, provider profiles, evaluation requirements and engineering controls.</p><a class="source" href="life-cycle-workstation.html#configuration" data-reference-section="configuration">Configuration capabilities <span aria-hidden="true">&rarr;</span></a><a class="source" href="life-cycle-workstation.html#controls" data-reference-section="controls">Rigor and approvals <span aria-hidden="true">&rarr;</span></a></div>
+        <p class="quiet">Capabilities depend on the active specialization and selected tools. Required controls, permissions and approvals still apply.</p>
+      </details>
+      <details class="readme-panel">
+        <summary>TWTTY at a glance</summary>
+        <p><strong>One lifecycle per project or Iteration.</strong> SPEC identifies domains. PLAN groups work, records real dependencies and plans integration. Sequential is the default. Inside EXECUTE, prepare shared infrastructure and application connection settings before creating app-worker branches; only explicitly authorized Parallel runs independent, ready groups concurrently.</p>
+        <div class="actions"><button class="action primary" id="open-domain-diagram" type="button" aria-haspopup="dialog" aria-controls="domain-info">How domains enable parallel work</button><a class="source" href="life-cycle-workstation.html#plan" data-reference-section="plan" target="_blank" rel="noopener" aria-label="In-depth work-item planning (opens in a new tab)">Explore work-item planning <span aria-hidden="true">&nearr;</span></a></div>
+        <a href="assets/twtty-shared-lifecycle-velocity.svg" target="_blank" rel="noopener" aria-label="Open shared TWTTY lifecycle diagram (opens in a new tab)"><img class="readme-slide" src="assets/twtty-shared-lifecycle-velocity.svg" width="1200" height="570" loading="lazy" decoding="async" alt="One shared SEED, SPEC, PLAN, EXECUTE lifecycle with applicable delivery roles and gates. Bottom controls retain execution mode, sequential/parallel pattern, self-evaluation, and risk calibration."></a>
+        <a class="source" href="assets/twtty-shared-lifecycle-velocity.svg" target="_blank" rel="noopener" aria-label="Open full-size shared TWTTY lifecycle diagram (opens in a new tab)">Open full-size diagram <span aria-hidden="true">&nearr;</span></a>
+      </details>
+    </section>
+    <div id="new-project" aria-hidden="true" style="scroll-margin-top:100px"></div>
+    <section id="flow" data-workstation-setup data-workstation-guide="life-cycle-workstation.html" data-workstation-overview="README-workstation.html" aria-label="Interactive project workflow"><noscript><h2>Choose your next step</h2><p>Start project creates a baseline. Resume continues or joins existing work. Start iteration begins a new change. Handoff prepares an approved transfer to another team or customer. Follow the reference below for local development and shared delivery.</p></noscript></section>
+    <section id="reference" class="readme-section" aria-labelledby="reference-title">
+      <h2 id="reference-title">How delivery works</h2>
+      <p><strong>SEED → SPEC → PLAN → EXECUTE</strong><br>Intent → Requirements → Work design → Build and verify</p>
+      <p><strong>Discovery defines the work.</strong> Resolve requirements and configuration, then draft and check the specification. PLAN develops architecture, design and orchestration. <a href="life-cycle-workstation.html#discovery-interview" data-reference-section="discovery-interview">Explore the Discovery Interview</a>.</p>
+      <p><strong>Four commands, distinct purposes.</strong> Start project establishes the first baseline for new software or an approved existing-code goal, without resetting an existing TWTTY lifecycle. Resume recovers state and responsibility, then offers the permitted action; finding unclaimed work requires an explicit request. Start iteration adds approved intent after verified initial baseline completion. Handoff exports an approved scope without starting another lifecycle; it is unsupported for read-only assessment.</p>
+      <p class="quiet">Inside EXECUTE: set up the development environment, develop and verify locally, then build and deploy if approved. The local edit/build/test/run cycle is the inner loop. Continuous integration (CI) runs required build and verification checks; approved continuous delivery/deployment (CD) workflows manage cloud releases. A local app can still use an approved cloud model without cloud app hosting. Containers and formal test/evaluation suites apply only where the approved scope, risk level or policy requires them.</p>
+      <details class="readme-panel" id="project-handoff">
+        <summary>Hand off to another team or customer</summary>
+        <p>A teammate clones the repository and uses <code>twtty resume</code>. TWTTY recovers responsibility and offers the permitted action. Selected setup/run restores only missing prerequisites and verifies the actual app using that Human's own access; it does not claim another person's work or create a baseline.</p>
+        <p>Use <code>twtty handoff</code> to prepare a project for another team or customer. Confirm source/history, destination and access, then verify the private repository and matching ZIP. Include applicable source, locks, packaging/Compose/IaC definitions, recipes and licenses, plus the complete approved project-owned config/record scope. Reference the current separate framework, not a bundled snapshot. Sanitize export copies only; leave source unchanged.</p>
+        <p>Where containers apply, recipients build their own images from source and verify any custom Dockerfile. They need no sender images, credentials, caches or data. Resume uses their own identity and authorization; it transfers no claim or Autopilot grant. Independent CI/cloud bindings require their own owner approval.</p>
+        <p><a href="?workflow=handoff#flow" data-workflow-link="handoff">Explore Handoff</a> · <a href="life-cycle-workstation.html#customer-handoff" data-reference-section="customer-handoff">Handoff requirements</a> · <a href="life-cycle-workstation.html?workflow=resume#receiving-project" data-reference-section="receiving-project" data-receiving-link>Recipient onboarding</a>.</p>
+      </details>
+      <details class="readme-panel">
+        <summary>Authority, collaboration and continuity</summary>
+        <ul>
+          <li><strong>You control scope and approvals.</strong> Interactive mode is the default. Scoped Autopilot can be authorized after <code>SEED-EXIT</code>; it does not waive safeguards.</li>
+          <li><strong>Plans support team collaboration.</strong> Work is organized by domain, real dependencies, safe concurrency, and integration requirements—not hard-coded developers.</li>
+          <li><strong>Work is traceable.</strong> Append-only replay logs record prompts, outcomes, approvals and artifact paths. Single-domain Sequential work may reuse the authorized direct context where policy permits; domain/worker isolation and required publication PR/CI/review controls still apply.</li>
+          <li><strong>Rigor matches risk.</strong> L1 is a throwaway experiment, not approval for real users or production. Shared team deliverables generally need L2 or L3 controls.</li>
+        </ul>
+        <p>New projects normally place process artifacts under the product's <code>twtty/</code> folder: <code>seed/</code>, <code>spec/</code>, <code>plan/</code>, <code>replay-execution/</code> and <code>twtty-runtime-config/</code>. Preserve an existing adopted artifact root/layout. Application code, tests, infrastructure and CI stay in their normal locations. Replay evidence is authoritative; <code>state.md</code> is derived. Every invocation reads the complete applicable framework; adopted project configuration changes only through approved reconciliation, never an age-driven refresh.</p>
+      </details>
+      <h3>Technical reference</h3>
+      <ul class="reference-links">
+        <li><a href="life-cycle-workstation.html#configuration" data-reference-section="configuration">Configuration capabilities and project-owned settings</a></li>
+        <li><a href="life-cycle-workstation.html#workflow" data-reference-section="workflow" target="_blank" rel="noopener" aria-label="Full Life Cycle reference (opens in a new tab)">Full Life Cycle reference <span aria-hidden="true">&nbsp;&nearr;</span></a></li>
+        <li><a href="README-workstation.html">Shared guide entry point</a></li>
+        <li><a href="life-cycle-workstation.html#flow" data-reference-section="starting">Starting prompts and entry points</a></li>
+        <li><a href="life-cycle-workstation.html#workflow" data-reference-section="workflow">Four stages and approvals</a></li>
+        <li><a href="life-cycle-workstation.html#execute" data-reference-section="execute">Implementation and verification</a></li>
+        <li><a href="life-cycle-workstation.html#plan" data-reference-section="plan">Design and work-item planning</a></li>
+        <li><a href="../framework/methodology/specialized-implementations/sdlc/sdlc.md#83-multi-developer-collaboration">Authoritative team collaboration rules</a></li>
+        <li><a href="life-cycle-workstation.html#controls" data-reference-section="controls">Risk and approvals</a></li>
+      </ul>
+      <h3>Responsible use and production readiness</h3>
+      <p>Before production use, applications built or modified with TWTTY must meet the testing, security, privacy and release requirements appropriate to their intended use and risk. For AI applications, this includes applicable AI safety and responsible AI evaluations, including jailbreak and prompt-injection testing where relevant. Users remain responsible for validating, deploying and operating their applications.</p>
+      <p>Users should validate outcomes and apply appropriate controls for permissions, sensitive information, deployments, destructive operations, and third-party costs.</p>
+      <h3>Attribution and license</h3>
+      <p>Copyright 2026 Ajai Peddapanga. First-party code, configuration, templates, documentation, methodology and artwork are offered under <a href="../LICENSE">Apache License 2.0</a>. See <a href="../AUTHORS.md">AUTHORS</a>, <a href="../NOTICE">NOTICE</a> and <a href="../TRADEMARKS.md">branding information</a>.</p>
+      <p>TWTTY is provided "AS IS", without warranties, subject to the warranty disclaimers and liability limitations in the <a href="../LICENSE">Apache License 2.0</a>.</p>
+      <p>AI-generated outputs may be incorrect, incomplete or unsafe; validate results before use. TWTTY does not guarantee accuracy, security, regulatory compliance or production suitability.</p>
+      <p>TWTTY is not officially sponsored or endorsed by Microsoft. Beta availability does not imply production readiness or enterprise certification.</p>
+    </section>
+    <footer>
+      <p class="v20-creator-credit">Original Creator &amp; Lead Architect: Ajai Peddapanga</p>
+      <a href="../LICENSE">License</a><a href="../NOTICE">Attribution</a><a href="life-cycle-workstation.html#workflow" data-reference-section="workflow">Lifecycle reference</a>
+      <p>TWTTY is currently in beta.</p></footer>
+  </main>
+  <dialog id="domain-info" aria-labelledby="domain-info-title">
+    <div class="domain-header"><div class="domain-heading"><p class="eyebrow">Parallel delivery</p><h2 id="domain-info-title">How domains coordinate the work</h2></div><button class="close" id="close-domain-diagram" type="button" aria-label="Close parallel-work explanation">&times;</button></div>
+    <p>Domains organize responsibilities. Work-item groups organize delivery. Both belong to one project/Iteration scope—not independent full TWTTY runs.</p>
+    <div class="domain-layout">
+      <section aria-labelledby="domain-rules-title">
+        <h3 id="domain-rules-title">What the framework requires</h3>
+        <ol class="domain-rule-list" role="list">
+          <li><span class="domain-rule-number">1</span><div><h4>Derive the domains</h4><p>TWTTY derives areas of responsibility from requirements; the Human confirms or overrides the split. Simple systems can stay single-domain. Multi-domain scopes use an overview plus domain plans, with clear file ownership and interfaces.</p><a class="source" href="life-cycle-workstation.html#spec" data-reference-section="spec" target="_blank" rel="noopener" aria-label="In-depth requirements and domain guidance (opens in a new tab)">Read about requirements and domains <span aria-hidden="true">&nearr;</span></a></div></li>
+          <li><span class="domain-rule-number">2</span><div><h4>Group the planned work</h4><p>Each current work item belongs to one domain and exactly one delivery group. The plan records real dependencies and integration requirements without assigning named developers. Potential concurrency is planned even when execution is Sequential.</p><a class="source" href="life-cycle-workstation.html#plan" data-reference-section="plan" target="_blank" rel="noopener" aria-label="In-depth work-item planning (opens in a new tab)">Read about work-item planning <span aria-hidden="true">&nearr;</span></a></div></li>
+          <li><span class="domain-rule-number">3</span><div><h4>Authorize and isolate Parallel</h4><p>Reuse the explicit Human pattern choice and approve concrete assignments within PLAN. Prepare shared infrastructure and application connection settings first. Concurrent workers need non-overlapping file changes, no dependency on one another, separate branches/working folders and a cap of 5 concurrent subagents. Integrate their results one at a time under the approved plan; extra internal PRs are not automatic, but required publication PR/CI/review controls remain.</p><a class="source" href="life-cycle-workstation.html#controls" data-reference-section="controls" target="_blank" rel="noopener" aria-label="In-depth parallel work and approvals (opens in a new tab)">Read about parallel work and approvals <span aria-hidden="true">&nearr;</span></a></div></li>
+        </ol>
+      </section>
+    </div>
+    <p class="domain-proof-note">Project plans, branch claims, and replay logs record the work and its outcomes. Domain boundaries do not remove dependencies, and planned concurrency does not itself authorize Parallel.</p>
+  </dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script id="iteration-loop-layout">
+    (() => {
+      "use strict";
+      const frame=document.querySelector(".overview-loop"),grid=frame.querySelector(".overview-stages");
+      const seed=grid.children[0],execute=grid.children[3],svg=frame.querySelector(".iteration-loop");
+      const path=document.getElementById("iteration-loop-path"),label=document.getElementById("iteration-loop-label");
+      function drawLoop() {
+        const box=frame.getBoundingClientRect(),first=seed.getBoundingClientRect(),last=execute.getBoundingClientRect();
+        const endX=first.left-box.left,endY=first.top+first.height/2-box.top,left=12,corner=6;
+        const startY=last.top+last.height/2-box.top,stacked=last.top>first.top+1;
+        let route,labelX,labelY;
+        if(stacked) {
+          const startX=last.left-box.left;
+          route=`M${startX} ${startY} H${left+corner} Q${left} ${startY} ${left} ${startY-corner} V${endY+corner} Q${left} ${endY} ${left+corner} ${endY} H${endX}`;
+          labelX=left;labelY=(startY+endY)/2;
+        } else {
+          const startX=last.right-box.left,right=box.width-12,bottom=last.bottom-box.top+24;
+          route=`M${startX} ${startY} H${right-corner} Q${right} ${startY} ${right} ${startY+corner} V${bottom-corner} Q${right} ${bottom} ${right-corner} ${bottom} H${left+corner} Q${left} ${bottom} ${left} ${bottom-corner} V${endY+corner} Q${left} ${endY} ${left+corner} ${endY} H${endX}`;
+          labelX=box.width/2;labelY=bottom;
+        }
+        svg.setAttribute("viewBox",`0 0 ${box.width} ${box.height}`);
+        path.setAttribute("d",route);
+        label.setAttribute("x",String(labelX));label.setAttribute("y",String(labelY));
+        label.setAttribute("transform",stacked?`rotate(-90 ${labelX} ${labelY})`:"");
+        svg.removeAttribute("hidden");
+      }
+      const observer=new ResizeObserver(drawLoop);
+      observer.observe(grid);observer.observe(seed);observer.observe(execute);
+      drawLoop();
+    })();
+  </script>
+  <script id="domain-diagram-controls">
+    (() => {
+      "use strict";
+      const button=document.getElementById("open-domain-diagram"),dialog=document.getElementById("domain-info");
+      button.addEventListener("click",()=>{dialog.showModal();dialog.scrollTop=0;});
+      document.getElementById("close-domain-diagram").addEventListener("click",()=>dialog.close());
+      dialog.addEventListener("close",()=>button.focus());
+    })();
+  </script>
+</body>
+</html>
