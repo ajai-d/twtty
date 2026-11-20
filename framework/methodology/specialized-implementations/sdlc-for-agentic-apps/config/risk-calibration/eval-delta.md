@@ -42,7 +42,7 @@ acknowledgment, dataset or evaluation report.
   Absent that acknowledgment, the AI Agent MUST `Escalate` (core §3.2). The selected L1
   dataset may be small; do not claim statistical stability from a single sample. This
   single-sample acknowledgment is **separate from, and additional to**, the baseline L1
-  throwaway-prototype acknowledgment: an L1 agentic project with selected formal stochastic eval dimensions
+  prototype acknowledgment: an L1 agentic project with selected formal stochastic eval dimensions
   MUST record **both** in the `meta/risk-level` entry's `Notes` — the one confirmed level
   selects the L1 column of **both** this overlay and the baseline ladder.
 - **L4–L5 pass rule.** A **CI-margin** pass rule MAY be used instead of K-of-N at the

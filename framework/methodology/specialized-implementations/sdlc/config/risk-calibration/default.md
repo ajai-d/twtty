@@ -10,7 +10,7 @@ level, the cell contains the threshold.
 
 | Level | Profile |
 |:-----:|---------|
-| 1 | Throwaway prototype or experiment |
+| 1 | Prototype or experiment |
 | 2 | Internal workflow, low blast radius |
 | 3 | Team-facing deliverable, moderate stakes |
 | 4 | Customer-facing or revenue-impacting |
@@ -263,7 +263,7 @@ below).
 
 Because Level 1 reduces review/scanning/operations controls, the AI Agent MUST **enumerate only the actually skipped controls**, accounting for selected delivery, approved development services, container checkpoints and stricter profiles, to the Human User when
 confirming the level and MUST obtain **explicit acknowledgment** that the project is a
-throwaway prototype and **NOT** intended for real users, customer data, production
+prototype and **NOT** intended for real users, customer data, production
 traffic, or long-lived operation. The acknowledgment MUST be recorded in the `Notes` field
 of the `meta/risk-level` replay-log entry. Absent it, the AI Agent MUST `Escalate` (core
 §3.2).

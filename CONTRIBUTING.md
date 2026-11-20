@@ -62,13 +62,13 @@ repository, manage its settings, merge changes or publish official releases.
 Public readability and the right to fork do not grant those permissions.
 Apache 2.0 still permits others to modify and redistribute their own copies.
 
-The official `main` branch requires pull requests, all four Framework CI matrix
-checks and resolved review threads, and blocks force pushes and deletion.
-Outside contributions require owner review. For owner-authored pull requests,
-the owner may bypass the independent-review requirement rather than approve
-their own work; the separate pull-request, CI and history-protection rules
-still apply. This solo-maintainer exception grants no bypass rights to outside
-contributors. Protected `v*` tags cannot be updated or deleted.
+The official `main` branch normally requires pull requests, all four Framework
+CI matrix checks and resolved review threads. Outside contributions require
+owner review. Repository administrators may bypass these requirements and the
+review requirement, including by pushing directly to `main`. This exception
+grants no bypass rights to outside contributors. Separate history protections
+still block force pushes and deletion, including for administrators.
+Protected `v*` tags cannot be updated or deleted.
 
 There is no automatic release or auto-merge workflow in the prepared files.
 Publication and any access changes require separate owner approval.

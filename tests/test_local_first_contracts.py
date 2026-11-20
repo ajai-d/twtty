@@ -531,7 +531,7 @@ class ProtocolContracts(unittest.TestCase):
         method = read(agentic / "sdlc-for-agentic-apps.md")
         exception = method.split("**L1 single-sample exception.**", 1)[1].split("\n---", 1)[0]
         for requirement in ("effective approved overlay permits L1", "approved evaluation requirement",
-                            "both the L1 throwaway-prototype acknowledgment",
+                            "both the L1 prototype acknowledgment",
                             "separate single-sample acknowledgment", "Missing acknowledgment blocks",
                             "never proof of repeatability", "stricter overlay or approved larger N",
                             "do not reduce N, pass rules or quality thresholds",
