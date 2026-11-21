@@ -1,6 +1,11 @@
 # TWTTY™ - Tell Me What To Tell You
 
-TWTTY is an intent-driven engineering framework built for **teams developing production-grade applications**. You describe what you want to build, and AI plans, builds and tests the app, then deploys it when approved. Your team retains control over scope, approvals and consequential decisions.
+**Software Engineering Factory** · *Intent-Driven. AI-Orchestrated.*
+
+TWTTY is an intent-driven agentic engineering framework built for **teams developing production-grade applications**. You describe what you want to build, and AI plans, builds and tests the app, then deploys it when approved. Your team retains control over scope, approvals and consequential decisions.
+
+- **Scale your agentic software delivery** through a governed, repeatable, and configurable engineering process.
+- **Empower your teams to build production-ready applications** with security by design, quality assurance, and governance controls aligned with your business requirements.
 
 **[Explore the interactive TWTTY guide](https://ajai-d.github.io/twtty/)** for setup, workflows and reference.
 
