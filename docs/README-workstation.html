@@ -132,10 +132,19 @@
     .readme-section a:not(.action) { overflow-wrap:anywhere; }
     .readme-section ol,.readme-section ul { padding-left:24px; }
     .readme-lead { max-width:68ch; }
+    .readme-lead .delivery-highlight { color:#000; font-weight:700; }
+    .readme-lead .intro-highlight { color:#116854; font-weight:600; }
+    .readme-lead .intro-benefits { display:grid; gap:16px; margin:0 0 22px; padding:0; list-style:none; }
+    .readme-lead .intro-benefits li+li { margin-top:0; }
+    .intro-benefits .delivery-highlight { display:block; margin-bottom:4px; font-size:1.1rem; line-height:1.35; text-wrap:balance; }
     .overview-hero { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); align-items:center; gap:32px; padding:24px 28px; margin-bottom:18px; border:1px solid var(--line); border-radius:14px; background:var(--white); box-shadow:var(--shadow); }
     .hero-copy { min-width:0; }
+    .hero-copy .readme-lead p { line-height:1.65; text-wrap:pretty; }
     .hero-copy .eyebrow { margin-bottom:10px; }
     .hero-copy .actions { margin-bottom:0; }
+    .overview-benefits { max-width:none; margin:24px 0; padding:0 28px; line-height:1.65; }
+    .overview-benefits .intro-benefits { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; margin:0; }
+    .overview-benefits .intro-benefits li { min-width:0; padding-top:16px; border-top:1px solid var(--line); text-wrap:pretty; }
     .intent-line { margin:0 0 16px; font-size:1.05rem; line-height:1.45; font-weight:600; color:var(--green); text-wrap:balance; }
     .lifecycle-overview { min-width:0; margin:0; }
     .overview-loop { position:relative; padding-left:30px; }
@@ -229,6 +238,11 @@
       .top-nav { flex-basis:100%; justify-content:flex-start; gap:4px 14px; }
       .project-types,.benefits { grid-template-columns:minmax(0,1fr); }
       .overview-hero { padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+      .overview-benefits { padding:0; }
+      .overview-benefits .intro-benefits { grid-template-columns:minmax(0,1fr); gap:20px; }
+      .hero-copy .actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .hero-copy .action { min-width:0; padding-inline:8px; text-wrap:balance; }
+      .hero-copy .action.primary { grid-column:1 / -1; }
       .readme-section .overview-stages { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .overview-loop { padding:0 0 0 30px; }
       .readme-section .overview-stages li:nth-child(3) { grid-column:2; grid-row:2; }
@@ -424,9 +438,9 @@
       <p class="v20-brand-descriptor">Software Engineering Factory</p>
       <p class="intent-line">Intent-Driven. AI-Orchestrated.</p>
       <div class="readme-lead">
-        <p><strong>Tell Me What To Tell You (TWTTY)</strong> is an agentic enterprise engineering framework that inverts responsibility for orchestrating AI—from humans to AI. It removes the burden of prompt engineering: rather than requiring people to direct every step, AI identifies what it needs, asks the right questions, and steers complex engineering work toward desired business outcomes.</p>
+        <p>TWTTY is an intent-driven agentic engineering framework built for <strong>teams developing production-grade applications</strong>. It inverts responsibility for orchestrating AI—from humans to AI. You describe what you want to build, and AI plans, builds and tests the app, then deploys it when approved. Your team retains control over scope, approvals and consequential decisions.</p>
       </div>
-      <div class="actions"><a class="action primary" href="#flow">Explore the Workflow <span aria-hidden="true">&nbsp;&darr;</span></a><a class="action" href="?workflow=new#flow" data-workflow-link="new">Get Started</a></div>
+      <div class="actions"><a class="action primary" href="#flow">Explore the Workflow <span aria-hidden="true">&nbsp;&darr;</span></a><a class="action" href="?workflow=new#flow" data-workflow-link="new">Get Started</a><a class="action" href="https://github.com/ajai-d/twtty">View on GitHub</a></div>
       </div>
       <figure class="lifecycle-overview">
         <div class="overview-loop">
@@ -445,6 +459,12 @@
         </div>
         <figcaption>AI runs the workflow. Required human decisions and approvals still apply.</figcaption>
       </figure>
+      </div>
+      <div class="readme-lead overview-benefits">
+        <ul class="intro-benefits" role="list">
+          <li><strong class="delivery-highlight">Scale your agentic software delivery</strong> through a <span class="intro-highlight">governed, repeatable, and configurable</span> engineering process.</li>
+          <li><strong class="delivery-highlight">Empower your teams to build production-ready applications</strong> with <span class="intro-highlight">security by design, quality assurance, and governance controls</span> aligned with your business requirements.</li>
+        </ul>
       </div>
         <p class="authority"><strong>AI drives the workflow. Humans retain authority over intent, boundaries, and consequential decisions.</strong></p>
       <h2>What can you build?</h2>
