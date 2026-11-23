@@ -634,6 +634,17 @@ class ProtocolContracts(unittest.TestCase):
         self.assertIn("not a deployment authorization", template)
         self.assertIn("payload or claim unrun checks passed", template)
         self.assertIn("unrun recipient/cloud checks remain pending", handoff)
+        verification = handoff.split("\n6. ", 1)[1].split("\n7. ", 1)[0]
+        for guard in ("Automatically extract each requested ZIP",
+                      "locally clone each requested repository",
+                      "separate fresh local folders",
+                      "run `twtty resume` with local setup/run explicitly selected using `HANDOFF.md`",
+                      "applicable restore/build/run and the project's basic smoke check",
+                      "not sender-only caches or copied credentials",
+                      "missing required prerequisites block delivery",
+                      "grants no implementation or deployment authority"):
+            with self.subTest(pickup_guard=guard):
+                self.assertIn(guard, verification)
 
     def test_read_only_assessment_does_not_enter_application_setup(self):
         self.assertIn("Reverse Engineering keeps the investigated target read-only",
