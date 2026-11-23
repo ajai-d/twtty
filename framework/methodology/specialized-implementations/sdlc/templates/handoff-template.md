@@ -22,6 +22,8 @@ Generate this guide in the approved isolated payload, not the source. Replace pl
 
 [Exact supported tool versions, approved install/locked restore, working directories, shared native/container build/scan/test/evaluation/run recipes and expected outcomes.]
 
+[Sender's fresh-folder pickup results for each delivered format: ZIP extraction/repository clone, Resume local setup/run, applicable restore/build/run and basic smoke check. Distinguish these verified local results from pending recipient/cloud readiness.]
+
 [Project-owned Docker services/ports/volumes, approved minimal Azure dependencies, non-secret config names, recipient Entra permissions/network/data/cost requirements and actual service checks. Host login is not automatically container authentication.]
 
 [Shared CI and merge checks, optional CD status, IaC ownership/layout and missing resource/recipe/binding prerequisites. No sender CI federation or cloud permissions are transferred.]
