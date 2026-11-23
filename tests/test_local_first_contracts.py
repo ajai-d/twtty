@@ -618,11 +618,14 @@ class ProtocolContracts(unittest.TestCase):
 
     def test_handoff_blocks_required_gaps_and_preserves_authority_boundaries(self):
         handoff = subsection(read(SDLC / "sdlc.md"), "### 3.7 Project handoff")
-        for guard in ("private GitHub repository and matching ZIP", "Tracked-but-ignored",
+        for guard in ("private GitHub repository, ZIP, or both, as requested", "Tracked-but-ignored",
                       "not only the latest iteration", "unresolved required gaps block",
                       "Never copy source `.git`", "Sanitize export copies only",
                       "approved history", "LFS", "submodule", "symlink",
-                      "outside source and payload", "Stage the export repository",
+                      "outside source and payload", "Stage the requested outputs",
+                      "repository/ZIP parity when both are delivered",
+                      "safe extraction when a ZIP is delivered",
+                      "planned private destination/access when a repository is delivered",
                       "Only then", "Failed checks block publication"):
             with self.subTest(guard=guard):
                 self.assertIn(guard, handoff)
