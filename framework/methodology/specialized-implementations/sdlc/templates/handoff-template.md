@@ -4,7 +4,7 @@ Generate this guide in the approved isolated payload, not the source. Replace pl
 
 ## Obtain the project
 
-[Private repository URL/access/clone instructions, matching ZIP location/extraction, delivered revision and safe history restore commands where a bundle is used. Both routes materialize the same selected sanitized content/history.]
+[Private repository URL/access/clone instructions and/or ZIP location/extraction instructions, as applicable to the requested delivery, delivered revision and safe history restore commands where a bundle is used. When both are delivered, both routes materialize the same selected sanitized content/history.]
 
 ## Framework and project context
 
