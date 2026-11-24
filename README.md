@@ -18,7 +18,7 @@ Clone or download this repository, then open it alongside your project in an AI 
 To start building an agentic app, replace the placeholders with your full paths and paste the following prompt into your AI coding assistant:
 
 ```text
-Read "<full-path-to-twtty.md>" and run: twtty start project type=sdlc-for-agentic-apps project="<project-folder>"
+Read "<twtty-root>\framework\twtty.md" and run: twtty start project type=sdlc-for-agentic-apps project="<project-folder>"
 ```
 
 For example, with Windows paths:
@@ -31,12 +31,12 @@ The assistant helps capture your project's intent and asks for the required appr
 
 | I want to... | Complete assistant prompt |
 |---|---|
-| Start a project | `Read "<full-path-to-twtty.md>" and run: twtty start project type=<project-type> project="<project-folder>"` |
-| Continue or join a project | `Read "<full-path-to-twtty.md>" and run: twtty resume project="<project-folder>"` |
-| Start a feature or fix after the initial baseline is complete | `Read "<full-path-to-twtty.md>" and run: twtty start iteration project="<project-folder>"` |
-| Prepare a handoff to transition the project to another team or customer | `Read "<full-path-to-twtty.md>" and run: twtty handoff project="<project-folder>"` |
+| Start a project | `Read "<twtty-root>\framework\twtty.md" and run: twtty start project type=<project-type> project="<project-folder>"` |
+| Continue or join a project | `Read "<twtty-root>\framework\twtty.md" and run: twtty resume project="<project-folder>"` |
+| Start a feature or fix after the initial baseline is complete | `Read "<twtty-root>\framework\twtty.md" and run: twtty start iteration project="<project-folder>"` |
+| Prepare a handoff to transition the project to another team or customer | `Read "<twtty-root>\framework\twtty.md" and run: twtty handoff project="<project-folder>"` |
 
-Replace `<full-path-to-twtty.md>` with the absolute path to the framework's `twtty.md` file inside its `framework` directory, including the filename, not just a folder. Replace `<project-folder>` with the absolute path to your product root. Keep both paths in quotes. `project=` is the product root, not its `twtty` subfolder.
+Replace `<twtty-root>` with the absolute path to your cloned or downloaded TWTTY repository. Replace `<project-folder>` with the absolute path to your product root. Keep both paths in quotes. `project=` is the product root, not its `twtty` subfolder.
 
 During application work, the assistant treats the TWTTY framework checkout as read-only; your project's copied configuration remains editable under its normal approvals. Framework changes require an explicit maintenance request. This is assistant guidance, not a filesystem lock.
 
